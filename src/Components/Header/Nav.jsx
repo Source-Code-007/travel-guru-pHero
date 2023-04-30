@@ -1,17 +1,16 @@
 import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import "swiper/css";
-import "swiper/css/pagination";
 import bannerImg from '../../assets/img/Rectangle-1.jpg'
+import logo from '../../assets/img/logo.png'
+import Banner from './Banner';
 
 const Nav = () => {
     return (
-        <header style={{ backgroundImage: `url(${bannerImg})` }} className=' bg-cover bg-no-repeat min-h-screen'>
+        <header style={{ backgroundImage: `url(${bannerImg})` }} className=' bg-cover bg-no-repeat min-h-screen bg-slate-700 bg-blend-overlay'>
 
             <nav className="bg-transparent border-gray-200 dark:bg-gray-900">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <a href="https://flowbite.com/" className="flex items-center">
-                        <img src="https://flowbite.com/docs/images/logo.svg" className="h-8 mr-3" alt="Flowbite Logo" />
+                        <img src={logo} className="h-8 mr-3" alt="Flowbite Logo" />
                         <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Travel Guru</span>
                     </a>
                     <div className="flex md:order-2">
@@ -53,30 +52,8 @@ const Nav = () => {
                 </div>
             </nav>
 
-            <div className='my-28'>
-               <Swiper
-                    slidesPerView={4}
-                    centeredSlides={true}
-                    spaceBetween={30}
-                    grabCursor={true}
-                    className="mySwiper">
-                    <SwiperSlide>
-                        <div className='h-96 bg-red-500 rounded-lg'></div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className='h-96 bg-red-500 rounded-lg'></div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className='h-96 bg-red-500 rounded-lg'></div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className='h-96 bg-red-500 rounded-lg'></div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className='h-96 bg-red-500 rounded-lg'></div>
-                    </SwiperSlide>
-                </Swiper>
-            </div>
+            <Banner></Banner>
+
         </header>
     );
 };
