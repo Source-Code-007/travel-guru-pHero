@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
-
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+
 
 const Banner = ({ setDynamicImg }) => {
     const [travelData, setTravelData] = useState()
@@ -30,7 +31,7 @@ const Banner = ({ setDynamicImg }) => {
                     selectedData && <>
                         <h2 className='font-bold text-5xl'>{selectedData.name}</h2>
                         <p className='text-slate-200'>{selectedData.description}</p>
-                        <button onClick={() => console.log(selectedData.name)} type="button" className="bg-green-500 rounded-lg py-2 px-4 w-fit">Booking <FaArrowRight className='inline-block' /> </button>
+                        <Link to={`/booking/${selectedData.id}`} type="button" className="bg-green-500 rounded-lg py-2 px-4 w-fit">Booking <FaArrowRight className='inline-block' /> </Link>
                     </>
                 }
             </div>
@@ -44,7 +45,7 @@ const Banner = ({ setDynamicImg }) => {
                     {
                         travelData && travelData.map(data => {
                             return <SwiperSlide onClick={() => swiperFunc(data)} key={data.id}>
-                                <div style={{ backgroundImage: `url(${data.photo})` }} className='h-96 bg-cover rounded-lg relative group bg-slate-600 bg-blend-overlay'>
+                                <div style={{ backgroundImage: `url(${data.photo})` }} className='h-96 bg-cover bg-center rounded-lg relative group bg-slate-600 bg-blend-overlay'>
                                     <a href='#' className='shadow font-bold text-3xl bg-slate-800 bg-opacity-40 text-white py-5 absolute bottom-2 left-0 right-0 text-center group-hover:bg-opacity-70 duration-500'>{data.name}</a>
                                 </div>
                             </SwiperSlide>

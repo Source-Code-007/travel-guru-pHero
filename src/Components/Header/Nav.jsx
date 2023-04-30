@@ -1,17 +1,12 @@
-import React, { useState } from 'react';
-import bannerImg from '../../assets/img/Rectangle-1.jpg'
-import logo from '../../assets/img/logo.png'
-import Banner from './Banner';
+import React from 'react';
+import logo from '../../assets/img/logo-white.png'
 
 const Nav = () => {
-    const [dynamicImg, setDynamicImg] = useState()
     return (
-        <header style={{ backgroundImage: `url(${dynamicImg || bannerImg})`}} className=' bg-cover bg-no-repeat min-h-screen bg-slate-700 bg-blend-overlay'>
-
-            <nav className="bg-transparent border-gray-200 dark:bg-gray-900">
+              <nav className="bg-transparent border-gray-200 dark:bg-gray-900">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <a href="https://flowbite.com/" className="flex items-center">
-                        <img src={logo} className="h-8 mr-3" alt="Travel Guru" />
+                        <img src={logo} className="mr-3 w-28 h-auto" alt="Travel Guru" />
                         {/* <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Travel Guru</span> */}
                     </a>
                     <div className="flex md:order-2">
@@ -52,10 +47,6 @@ const Nav = () => {
                     </div>
                 </div>
             </nav>
-
-            <Banner setDynamicImg={setDynamicImg}></Banner>
-
-        </header>
     );
 };
 
