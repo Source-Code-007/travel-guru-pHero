@@ -2,22 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 
+import { FaArrowRight } from "react-icons/fa";
+
 const Banner = () => {
     const [travelData, setTravelData] = useState()
+    const [selectedData, setSelectedData] = useState()
 
     useEffect(() => {
         fetch('http://localhost:2000/destinations')
             .then(res => res.json())
-            .then(data => setTravelData(data.destinations))
-    })
+            .then(data => {
+                setTravelData(data.destinations)
+                setSelectedData(data.destinations[0])
+            })
+    }, [])
 
     return (
-        <div className='my-28 grid grid-cols-2'>
-            <div>
-                <h2 className='font-bold text-slate-50 text-3xl'>wow amazing!</h2>
-                <h2 className='font-bold text-slate-50 text-3xl'>{travelData && travelData.length}</h2>
+        <div className='my-28 ml-24 grid grid-cols-12'>
+            <div className='space-y-4 text-white col-span-5 px-10 flex justify-center flex-col'>
+                {
+                    selectedData && <>
+                        <h2 className='font-bold text-5xl'>{selectedData.name}</h2>
+                        <p className='text-slate-200'>{selectedData.description}</p>
+                        <button onClick={()=> console.log(selectedData.name)} type="button" className="bg-green-500 rounded-lg py-2 px-4 w-fit">Booking <FaArrowRight className='inline-block' /> </button>
+                    </>
+                }
             </div>
-            <div>
+            <div className='col-span-7'>
                 <Swiper
                     slidesPerView={4}
                     centeredSlides={true}
@@ -26,9 +37,9 @@ const Banner = () => {
                     className="mySwiper">
                     {
                         travelData && travelData.map(data => {
-                            return <SwiperSlide key={data.id}>
-                                <div style={{ background: `url(${data.photo})` }} className='h-96 bg-red-500 rounded-lg relative'>
-                                    <h2 className='shadow-inner bg-slate-800 bg-opacity-70 text-white py-10 absolute bottom-2 left-0 right-0 text-center'>{data.name}</h2>
+                            return <SwiperSlide onClick={() => setSelectedData(data)} key={data.id}>
+                                <div style={{ backgroundImage: `url(${data.photo})` }} className='h-96 bg-cover rounded-lg relative group bg-slate-600 bg-blend-overlay'>
+                                    <a href='#' className='shadow font-bold text-3xl bg-slate-800 bg-opacity-40 text-white py-5 absolute bottom-2 left-0 right-0 text-center group-hover:bg-opacity-70 duration-500'>{data.name}</a>
                                 </div>
                             </SwiperSlide>
                         })
