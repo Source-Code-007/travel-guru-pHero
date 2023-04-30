@@ -4,7 +4,7 @@ import "swiper/css";
 
 import { FaArrowRight } from "react-icons/fa";
 
-const Banner = () => {
+const Banner = ({ setDynamicImg }) => {
     const [travelData, setTravelData] = useState()
     const [selectedData, setSelectedData] = useState()
 
@@ -17,6 +17,12 @@ const Banner = () => {
             })
     }, [])
 
+    // carousel click func
+    const swiperFunc = (data) => {
+        setSelectedData(data)
+        setDynamicImg(data.photo)
+    }
+
     return (
         <div className='my-28 ml-24 grid grid-cols-12'>
             <div className='space-y-4 text-white col-span-5 px-10 flex justify-center flex-col'>
@@ -24,7 +30,7 @@ const Banner = () => {
                     selectedData && <>
                         <h2 className='font-bold text-5xl'>{selectedData.name}</h2>
                         <p className='text-slate-200'>{selectedData.description}</p>
-                        <button onClick={()=> console.log(selectedData.name)} type="button" className="bg-green-500 rounded-lg py-2 px-4 w-fit">Booking <FaArrowRight className='inline-block' /> </button>
+                        <button onClick={() => console.log(selectedData.name)} type="button" className="bg-green-500 rounded-lg py-2 px-4 w-fit">Booking <FaArrowRight className='inline-block' /> </button>
                     </>
                 }
             </div>
@@ -37,7 +43,7 @@ const Banner = () => {
                     className="mySwiper">
                     {
                         travelData && travelData.map(data => {
-                            return <SwiperSlide onClick={() => setSelectedData(data)} key={data.id}>
+                            return <SwiperSlide onClick={() => swiperFunc(data)} key={data.id}>
                                 <div style={{ backgroundImage: `url(${data.photo})` }} className='h-96 bg-cover rounded-lg relative group bg-slate-600 bg-blend-overlay'>
                                     <a href='#' className='shadow font-bold text-3xl bg-slate-800 bg-opacity-40 text-white py-5 absolute bottom-2 left-0 right-0 text-center group-hover:bg-opacity-70 duration-500'>{data.name}</a>
                                 </div>

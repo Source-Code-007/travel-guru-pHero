@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import bannerImg from '../../assets/img/Rectangle-1.jpg'
 import logo from '../../assets/img/logo.png'
 import Banner from './Banner';
 
 const Nav = () => {
+    const [dynamicImg, setDynamicImg] = useState()
     return (
-        <header style={{ backgroundImage: `url(${bannerImg})` }} className=' bg-cover bg-no-repeat min-h-screen bg-slate-700 bg-blend-overlay'>
+        <header style={{ backgroundImage: `url(${dynamicImg || bannerImg})`}} className=' bg-cover bg-no-repeat min-h-screen bg-slate-700 bg-blend-overlay'>
 
             <nav className="bg-transparent border-gray-200 dark:bg-gray-900">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <a href="https://flowbite.com/" className="flex items-center">
                         <img src={logo} className="h-8 mr-3" alt="Travel Guru" />
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Travel Guru</span>
+                        {/* <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Travel Guru</span> */}
                     </a>
                     <div className="flex md:order-2">
                         <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1" >
@@ -52,7 +53,7 @@ const Nav = () => {
                 </div>
             </nav>
 
-            <Banner></Banner>
+            <Banner setDynamicImg={setDynamicImg}></Banner>
 
         </header>
     );
