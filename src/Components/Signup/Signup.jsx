@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../../context/AuthContext';
 
 const Signup = () => {
-    const [ error, setError ] = useState('')
-    const [ success, setSuccess ] = useState('')
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
     const { createUserEmailPassFunc, updateUserProfileFunc, setUser } = useContext(authContext)
 
-    const handleSubmitFunc =  (e)=>{
+    const handleSubmitFunc = (e) => {
         setSuccess('')
         setError('')
         e.preventDefault()
@@ -17,27 +17,21 @@ const Signup = () => {
         const password = e.target.password.value
         const repeat_password = e.target.repeat_password.value
 
-        if(password !== repeat_password){
+        if (password !== repeat_password) {
             setError('Your password is not match')
         }
 
-        createUserEmailPassFunc(email, password).then(res=>{
+        createUserEmailPassFunc(email, password).then(res => {
             const currUser = res.user
-            setSuccess('User signun successfully!')
-            updateUserProfile(currUser, (`${firstName} ${lastName}`))
+            setSuccess('User signup successfully!')
             setUser(currUser)
+
+            updateUserProfileFunc(currUser,`${firstName} ${lastName}`)
         }).catch(e => {
+            console.log(e);
             setError(e.message)
         })
     }
-
-    // update user profile
-    const updateUserProfile = (user, name)=>{
-        updateUserProfileFunc(user, name).then(()=>{
-            console.log('user profile update')
-        })
-    }
-
     return (
         <div className='bg-slate-100'>
             <div className='md:h-screen sm:max-w-md mx-auto flex justify-center items-center'>
@@ -77,6 +71,7 @@ const Signup = () => {
                         </div>
                     </div>
                     {error && <p className="text-red-500">*{error}</p>}
+                    {success && <p className="text-green-500 font-bold">{success}</p>}
                     <button type="submit" className="w-full text-white bg-slate-800 hover:bg-slate-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create an account</button>
                     <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                         Already have an account? <Link to='/signin' className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</Link>
