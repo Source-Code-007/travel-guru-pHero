@@ -25,7 +25,8 @@ const Banner = ({ setDynamicImg, setBooking }) => {
     }
 
     return (
-        <div className='my-28 ml-24 grid grid-cols-12'>
+        <div className='ml-24 min-h-screen flex justify-center items-center '>
+            <div className='grid grid-cols-12'>
             <div className='space-y-4 text-white col-span-5 px-10 flex justify-center flex-col'>
                 {
                     selectedData && <>
@@ -53,6 +54,7 @@ const Banner = ({ setDynamicImg, setBooking }) => {
                     }
 
                 </Swiper>
+            </div>
             </div>
         </div>
     );

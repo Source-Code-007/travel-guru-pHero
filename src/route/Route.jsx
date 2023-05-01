@@ -6,6 +6,7 @@ import LayoutOne from '../Components/Layout/LayoutOne';
 import Signin from '../Components/Signin/Signin';
 import Signup from '../Components/Signup/Signup';
 import Hotel from '../Components/Hotel/Hotel';
+import LayoutTwo from '../Components/Layout/LayoutTwo';
 
 export const Route = createBrowserRouter([
     {
@@ -20,8 +21,14 @@ export const Route = createBrowserRouter([
                 path: 'signup',
                 element: <Signup></Signup>
             },
+        ]
+    },
+    {
+        path: 'hotel/:id',
+        element: <LayoutTwo></LayoutTwo>,
+        children: [
             {
-                path: 'hotel/:id',
+                path: '/hotel/:id',
                 element: <Hotel></Hotel>
             }
         ]

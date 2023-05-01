@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import logo from '../../assets/img/logo-white.png'
 import { authContext } from '../../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Nav = () => {
     const { user, loading, signoutFunc } = useContext(authContext)
+    const location = useLocation()
 
     // handle singout
     const handleSignoutFunc = () => {
@@ -17,7 +18,7 @@ const Nav = () => {
 
     return (
         <>
-            <nav className="bg-transparent border-gray-200 dark:bg-gray-900">
+            <nav className={`${location.pathname!=='/'? 'bg-slate-800 bg-opacity-50' : 'bg-transparent' } absolute top-0 left-0 right-0 border-gray-200 dark:bg-gray-900`}>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <Link to="/" className="flex items-center">
                         <img src={logo} className="mr-3 w-28 h-auto" alt="Travel Guru" />
