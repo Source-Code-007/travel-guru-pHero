@@ -4,9 +4,11 @@ import { authContext } from '../../context/AuthContext';
 
 const Signup = () => {
     const [ error, setError ] = useState('')
-    const { createUserEmailPassFunc } = useContext(authContext)
+    const [ success, setSuccess ] = useState('')
+    const { createUserEmailPassFunc, updateUserProfileFunc, setUser } = useContext(authContext)
 
     const handleSubmitFunc =  (e)=>{
+        setSuccess('')
         setError('')
         e.preventDefault()
         const firstName = e.target.first_name.value
@@ -14,9 +16,26 @@ const Signup = () => {
         const email = e.target.email.value
         const password = e.target.password.value
         const repeat_password = e.target.repeat_password.value
+
         if(password !== repeat_password){
             setError('Your password is not match')
         }
+
+        createUserEmailPassFunc(email, password).then(res=>{
+            const currUser = res.user
+            setSuccess('User signun successfully!')
+            updateUserProfile(currUser, (`${firstName} ${lastName}`))
+            setUser(currUser)
+        }).catch(e => {
+            setError(e.message)
+        })
+    }
+
+    // update user profile
+    const updateUserProfile = (user, name)=>{
+        updateUserProfileFunc(user, name).then(()=>{
+            console.log('user profile update')
+        })
     }
 
     return (

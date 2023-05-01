@@ -13,15 +13,24 @@ const AuthContext = ({ children }) => {
         return createUserWithEmailAndPassword(auth, password)
     }
 
+    // update user profile func
+    const updateUserProfileFunc = (currUser, name)=>{
+        return updateProfile(currUser, {
+            displayName: name, photoURL: null
+          })
+    }
+
     // email verification func
     const emailVerficationFunc = (currUser)=>{
         return sendEmailVerification(currUser)
     }
 
+
     const authObj = {
         user,
         setUser,
         createUserEmailPassFunc,
+        updateUserProfileFunc,
         emailVerficationFunc
     }
 
