@@ -24,7 +24,7 @@ const Signup = () => {
             <div className='md:h-screen sm:max-w-md mx-auto flex justify-center items-center'>
                 <form onSubmit={handleSubmitFunc} className='space-y-4 my-16 w-full shadow bg-white p-5 rounded-lg'>
                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-                        Create and account
+                        Create an account
                     </h1>
                     <div className="grid md:grid-cols-2 md:gap-6">
                         <div className="relative z-0 w-full group">
