@@ -1,7 +1,23 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import DatePicker, { CalendarContainer } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from 'react-router-dom';
 
-const Booking = ({booking}) => {
+const Booking = ({ booking }) => {
+    const [startDate, setStartDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+    const navigate = useNavigate() 
+
+    // handle booking func
+    const handleBookingFunc = (e)=>{
+        e.preventDefault()
+        const origin = e.target.origin.value
+        const destination = e.target.destination.value
+        console.log(origin);
+        console.log(destination);
+        navigate(`/hotel/${booking.id}`)
+    }
+
     return (
         <div className='my-28 max-w-7xl mx-auto grid grid-cols-2'>
             <div className='space-y-4 text-white px-10 flex justify-center flex-col'>
@@ -14,11 +30,27 @@ const Booking = ({booking}) => {
                 }
             </div>
             <div className=''>
-               <form action="#" className='p-28 bg-slate-50 rounded-lg'>
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-               </form>
+                <form onSubmit={handleBookingFunc} action="#" className='p-10 bg-slate-50 rounded-lg space-y-6'>
+                    <div>
+                        <label htmlFor="origin">Origin</label>
+                        <input type="text" id='origin' name='origin' className='block w-full border-none rounded-lg bg-slate-200 py-4' />
+                    </div>
+                    <div>
+                        <label htmlFor="destination">Destination</label>
+                        <input type="text" id='destination' name='destination' className='block w-full border-none rounded-lg bg-slate-200 py-4' />
+                    </div>
+                    <div className='flex gap-5'>
+                        <div>
+                            <label htmlFor="from">From</label>
+                            <DatePicker id='from' className='border-none bg-slate-200 p-4 rounded-lg' selected={startDate} onChange={(date) => setStartDate(date)} />
+                        </div>
+                        <div>
+                            <label htmlFor="to">To</label>
+                            <DatePicker id='to' className='border-none bg-slate-200 p-4 rounded-lg' selected={endDate} onChange={(date) => setEndDate(date)} />
+                        </div>
+                    </div>
+                    <button type='submit' className='bg-red-500 py-3 px-5 w-full rounded-lg text-white font-bold'>Start Booking</button>
+                </form>
             </div>
         </div>
     );

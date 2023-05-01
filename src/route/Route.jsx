@@ -5,6 +5,7 @@ import {
 import LayoutOne from '../Components/Layout/LayoutOne';
 import Signin from '../Components/Signin/Signin';
 import Signup from '../Components/Signup/Signup';
+import Hotel from '../Components/Hotel/Hotel';
 
 export const Route = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ export const Route = createBrowserRouter([
             {
                 path: 'signup',
                 element: <Signup></Signup>
+            },
+            {
+                path: 'hotel/:id',
+                element: <Hotel></Hotel>
             }
         ]
     }
