@@ -10,7 +10,7 @@ const Banner = ({ setDynamicImg }) => {
     const [selectedData, setSelectedData] = useState()
 
     useEffect(() => {
-        fetch('http://localhost:2000/destinations')
+        fetch('https://travel-guru-server-bice.vercel.app/destinations')
             .then(res => res.json())
             .then(data => {
                 setTravelData(data.destinations)

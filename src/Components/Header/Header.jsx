@@ -9,8 +9,8 @@ const Header = () => {
     return (
         <header style={{ backgroundImage: `url(${dynamicBgImg || bannerImg})`}} className=' bg-cover bg-center bg-no-repeat min-h-screen bg-slate-700 bg-blend-overlay'>
             <Nav></Nav>
-
             <Banner setDynamicImg={setDynamicBgImg}></Banner>
+            {/* <Outlet></Outlet> */}
         </header>
     );
 };
