@@ -6,6 +6,8 @@ import LayoutOne from '../Components/Layout/LayoutOne';
 import Banner from '../Components/Header/Banner';
 import Booking from '../Components/Header/Booking';
 import Header from '../Components/Header/Header';
+import Signin from '../Components/Signin/Signin';
+import Signup from '../Components/Signup/Signup';
 
 export const Route = createBrowserRouter([
     {
@@ -30,6 +32,14 @@ export const Route = createBrowserRouter([
             //     path: 'booking/:id',
             //     element: <Booking></Booking>
             // }
+            {
+                path: 'signin',
+                element: <Signin></Signin>
+            },
+            {
+                path: 'signup',
+                element: <Signup></Signup>
+            }
         ]
     }
 ])
