@@ -7,6 +7,7 @@ const Signup = () => {
     const [success, setSuccess] = useState('')
     const { createUserEmailPassFunc, updateUserProfileFunc, setUser } = useContext(authContext)
 
+    // handle submit func
     const handleSubmitFunc = (e) => {
         setSuccess('')
         setError('')
@@ -32,6 +33,7 @@ const Signup = () => {
             setError(e.message)
         })
     }
+    
     return (
         <div className='bg-slate-100'>
             <div className='md:h-screen sm:max-w-md mx-auto flex justify-center items-center'>

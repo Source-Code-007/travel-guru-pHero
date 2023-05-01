@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 
-const Banner = ({ setDynamicImg }) => {
+const Banner = ({ setDynamicImg, setBooking }) => {
     const [travelData, setTravelData] = useState()
     const [selectedData, setSelectedData] = useState()
 
@@ -31,7 +31,7 @@ const Banner = ({ setDynamicImg }) => {
                     selectedData && <>
                         <h2 className='font-bold text-5xl'>{selectedData.name}</h2>
                         <p className='text-slate-200'>{selectedData.description}</p>
-                        <Link to={`/booking/${selectedData.id}`} type="button" className="bg-green-500 rounded-lg py-2 px-4 w-fit">Booking <FaArrowRight className='inline-block' /> </Link>
+                        <Link onClick={()=> setBooking(selectedData)} type="button" className="bg-green-500 rounded-lg py-2 px-4 w-fit">Booking <FaArrowRight className='inline-block' /> </Link>
                     </>
                 }
             </div>
