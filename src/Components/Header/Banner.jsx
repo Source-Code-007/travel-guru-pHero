@@ -31,7 +31,7 @@ const Banner = ({ setDynamicImg, setBooking }) => {
                 {
                     selectedData && <>
                         <h2 className='font-bold text-5xl'>{selectedData.name}</h2>
-                        <p className='text-slate-300'>{selectedData.description}</p>
+                        <p className='text-slate-200'>{selectedData.description}</p>
                         <Link onClick={()=> setBooking(selectedData)} type="button" className="bg-green-500 rounded-lg py-2 px-4 w-fit">Booking <FaArrowRight className='inline-block' /> </Link>
                     </>
                 }
