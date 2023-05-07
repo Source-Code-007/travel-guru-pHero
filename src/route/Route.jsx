@@ -6,31 +6,29 @@ import LayoutOne from '../Components/Layout/LayoutOne';
 import Signin from '../Components/Signin/Signin';
 import Signup from '../Components/Signup/Signup';
 import Hotel from '../Components/Hotel/Hotel';
-import LayoutTwo from '../Components/Layout/LayoutTwo';
+import Header from '../Components/Header/Header';
 
 export const Route = createBrowserRouter([
+    {
+        path: '/',
+        element: <Header></Header>,
+    },
     {
         path: '/',
         element: <LayoutOne></LayoutOne>,
         children: [
             {
-                path: 'signin',
+                path: '/hotel/:id',
+                element: <Hotel></Hotel>
+            },
+            {
+                path: '/signin',
                 element: <Signin></Signin>
             },
             {
-                path: 'signup',
+                path: '/signup',
                 element: <Signup></Signup>
-            },
-        ]
-    },
-    {
-        path: 'hotel/:id',
-        element: <LayoutTwo></LayoutTwo>,
-        children: [
-            {
-                path: '/hotel/:id',
-                element: <Hotel></Hotel>
             }
         ]
-    }
+    },
 ])

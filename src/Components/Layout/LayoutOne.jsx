@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../Header/Header';
 import { Outlet } from 'react-router-dom';
+import Nav from '../Header/Nav';
 
 const LayoutOne = () => {
     return (
         <>
-            <Header></Header>   
+            <Nav></Nav>
             <Outlet></Outlet>
         </>
     );
