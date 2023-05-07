@@ -17,8 +17,8 @@ const Booking = ({ booking }) => {
     }
 
     return (
-        <div className='max-w-7xl min-h-screen mx-auto flex justify-center items-center'>
-            <div className='grid grid-cols-2'>
+        <div className='max-w-7xl min-h-screen mx-6 lg:mx-auto flex justify-center items-center'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
                 <div className='space-y-4 text-white px-10 flex justify-center flex-col'>
                     {
                         booking && <>

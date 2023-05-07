@@ -26,8 +26,8 @@ const Banner = ({ setDynamicImg, setBooking }) => {
 
     return (
         <div className='ml-24 min-h-screen flex justify-center items-center '>
-            <div className='grid grid-cols-12'>
-            <div className='space-y-4 text-white col-span-5 px-10 flex justify-center flex-col'>
+            <div className='grid grid-cols-12 gap-2'>
+            <div className='space-y-4 text-white col-span-12 lg:col-span-5 px-10 flex justify-center flex-col'>
                 {
                     selectedData && <>
                         <h2 className='font-bold text-5xl'>{selectedData.name}</h2>
@@ -36,7 +36,7 @@ const Banner = ({ setDynamicImg, setBooking }) => {
                     </>
                 }
             </div>
-            <div className='col-span-7'>
+            <div className='col-span-12 lg:col-span-7'>
                 <Swiper
                     slidesPerView={4}
                     centeredSlides={true}
@@ -47,7 +47,7 @@ const Banner = ({ setDynamicImg, setBooking }) => {
                         travelData && travelData.map(data => {
                             return <SwiperSlide onClick={() => swiperFunc(data)} key={data.id}>
                                 <div style={{ backgroundImage: `url(${data.photo})` }} className='h-96 cursor-pointer bg-cover bg-center rounded-lg relative group bg-slate-600 bg-blend-overlay'>
-                                    <a href='#' className='shadow font-bold text-3xl bg-slate-800 bg-opacity-40 text-white py-5 absolute bottom-2 left-0 right-0 text-center group-hover:bg-opacity-70 duration-500'>{data.name}</a>
+                                    <p className='shadow font-bold text-md xl:text-3xl bg-slate-800 bg-opacity-40 text-white py-5 absolute bottom-2 left-0 right-0 text-center group-hover:bg-opacity-70 duration-500'>{data.name}</p>
                                 </div>
                             </SwiperSlide>
                         })
