@@ -18,7 +18,7 @@ const Nav = () => {
 
     return (
         <>
-            <nav className={`${location.pathname!=='/'? 'bg-slate-800 bg-opacity-50' : 'bg-transparent absolute' } top-0 left-0 right-0 border-gray-200 dark:bg-gray-900`}>
+            <nav className={`${location.pathname !== '/' ? 'bg-slate-800 bg-opacity-50' : 'bg-transparent absolute'} top-0 left-0 right-0 border-gray-200 dark:bg-gray-900`}>
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <Link to="/" className="flex items-center">
                         <img src={logo} className="mr-3 w-28 h-auto" alt="Travel Guru" />
